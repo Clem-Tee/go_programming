@@ -5,17 +5,17 @@ import (
 )
 
 func CamelToSnakeCase(s string) string {
-
 	if s == "" {
 		return ""
 	}
 
-	result := []rune{}
-	for i, char := range s {
-		if i > 0 && char >= 'A' || char <= 'Z' {
-			result = append(result, '_')
+	var result []rune
+	for i, ch := range s {
+		if i > 0 && ch >= 'A' && ch <= 'Z' {
+			result = append(result, '_', ch)
+		} else {
+			result = append(result, ch)
 		}
-		result = append(result, char+32)
 	}
 	return string(result)
 }

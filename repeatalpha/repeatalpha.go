@@ -5,17 +5,16 @@ import (
 )
 
 func RepeatAlpha(s string) string {
-	var result string
+	runeS := []rune(s)
+	result := ""
 
-	for _, char := range s {
-		if (char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z') {
-			var repeatcount int
-			if char >= 'a' && char <= 'z' {
-				repeatcount = int(char - 'a' + 1)
-			} else {
-				repeatcount = int(char - 'A' + 1)
+	for _, char := range runeS {
+		if char >= 'a' && char <= 'z' {
+			for i := 0; i < int(char-'a'+1); i++ {
+				result += string(char)
 			}
-			for i := 0; i < repeatcount; i++ {
+		} else if char >= 'A' && char <= 'Z' {
+			for i := 0; i < int(char-'A'+1); i++ {
 				result += string(char)
 			}
 		} else {
